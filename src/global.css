@@ -1,4 +1,4 @@
-html {
+/* html {
   font-size: 1.125rem;
   line-height: 1.6;
   font-weight: 400;
@@ -50,4 +50,14 @@ a:active {
 }
 
 hr {
+} */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
