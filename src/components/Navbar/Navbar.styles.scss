@@ -17,3 +17,59 @@
     padding: 5px;
   }
 }
+
+// #check {
+//   display: none;
+// }
+
+// label #btn,
+// label #close {
+//   font-size: 3rem;
+//   position: absolute;
+//   cursor: pointer;
+// }
+
+// label #btn {
+//   left: 3rem;
+//   top: 30px;
+//   color: #fff;
+//   transition: all 0.3s ease;
+// }
+
+// #close {
+//   z-index: 1111;
+//   left: -195px;
+//   transition: all 0.3s ease;
+// }
+
+// .sidebar {
+//   position: fixed;
+//   left: -250px;
+//   width: 250px;
+//   height: 100%;
+//   background: #202a3c;
+//   color: #fff;
+//   transition: all 0.3s ease;
+// }
+
+// #check:checked ~ .sidebar {
+//   left: 0;
+// }
+
+// #check:checked ~ label #btn {
+//   left: 250px;
+// }
+
+@media only screen and (max-width: 900px) {
+  .navbar {
+    &__left-section {
+      & input {
+        width: 80%;
+      }
+    }
+
+    &__right-section {
+      display: none;
+    }
+  }
+}

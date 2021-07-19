@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { GiHamburgerMenu } from 'react-icons/gi';
 import { FaUserCircle } from 'react-icons/fa';
 
 import './Navbar.styles.scss';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Header = styled.header`
   background-color: aqua;
@@ -29,19 +29,36 @@ const SearchInput = styled.input`
   }
 `;
 
+const HamburgerIcon = styled.i`
+  font-size: 3rem;
+  margin: 0 2rem;
+  cursor: pointer;
+`;
+
 const Navbar = () => {
+  const [navigation, setNavigation] = useState(false);
+
   const showNavbar = () => {
-    console.log('button has been clicked!!');
+    setNavigation(!navigation);
   };
 
   return (
     <Header>
-      <div className="navbar">
+      <nav className="navbar">
         <div className="navbar__left-section">
-          {/* icon  */}
-          <Button onClick={showNavbar}>
-            <GiHamburgerMenu size="2em" />
-          </Button>
+          {/* sidebar */}
+          {/* <input type="checkbox" id="check" />
+          <label htmlFor="check">
+            <i className="fa fa-bars" id="btn"></i>
+            <i className="fa fa-close" id="close"></i>
+          </label>
+          <div className="sidebar">
+            <Link to="/">
+              <i className="fa fa-home"></i>Home
+            </Link>
+          </div> */}
+          <HamburgerIcon className="fa fa-bars" id="btn"></HamburgerIcon>
+
           {/* inpu */}
           <SearchInput type="text" placeholder="Search a video..." />
         </div>
@@ -50,7 +67,7 @@ const Navbar = () => {
             <FaUserCircle size="2.5em" />
           </Button>
         </div>
-      </div>
+      </nav>
     </Header>
   );
 };
