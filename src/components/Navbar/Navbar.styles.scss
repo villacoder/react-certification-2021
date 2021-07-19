@@ -1,0 +1,17 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  &__left-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__right-section {
+    background-color: orange;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
