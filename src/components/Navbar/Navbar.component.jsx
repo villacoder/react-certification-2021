@@ -21,9 +21,11 @@ const Button = styled.button`
 const SearchInput = styled.input`
   border: none;
   padding: 10px;
-
+  width: 30%;
+  transition: all 0.3s ease;
   &:hover {
     border-bottom: 1px #000 solid;
+    width: 50%;
   }
 `;
 
@@ -45,7 +47,7 @@ const Navbar = () => {
         </div>
         <div className="navbar__right-section">
           <Button onClick={showNavbar}>
-            <FaUserCircle size="3em" />
+            <FaUserCircle size="2.5em" />
           </Button>
         </div>
       </div>
