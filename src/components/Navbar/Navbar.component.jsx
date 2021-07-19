@@ -1,74 +1,38 @@
 import React, { useState } from 'react';
-
-import { FaUserCircle } from 'react-icons/fa';
-
-import './Navbar.styles.scss';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const Header = styled.header`
-  background-color: aqua;
-  padding: 20px;
-`;
-
-const Button = styled.button`
-  border: none;
-  background-color: transparent;
-  margin: 0 3rem;
-  cursor: pointer;
-`;
-
-const SearchInput = styled.input`
-  border: none;
-  padding: 10px;
-  width: 30%;
-  transition: all 0.3s ease;
-  &:hover {
-    border-bottom: 1px #000 solid;
-    width: 50%;
-  }
-`;
-
-const HamburgerIcon = styled.i`
-  font-size: 3rem;
-  margin: 0 2rem;
-  cursor: pointer;
-`;
+import { FaHamburger, FaWindowClose, FaHome } from 'react-icons/fa';
+import './Navbar.styles.scss';
+// import styled from 'styled-components';
 
 const Navbar = () => {
-  const [navigation, setNavigation] = useState(false);
+  const [sidebar, setSidebar] = useState(false);
 
-  const showNavbar = () => {
-    setNavigation(!navigation);
-  };
+  const toogleSideBar = () => setSidebar(!sidebar);
 
   return (
-    <Header>
-      <nav className="navbar">
-        <div className="navbar__left-section">
-          {/* sidebar */}
-          {/* <input type="checkbox" id="check" />
-          <label htmlFor="check">
-            <i className="fa fa-bars" id="btn"></i>
-            <i className="fa fa-close" id="close"></i>
-          </label>
-          <div className="sidebar">
-            <Link to="/">
-              <i className="fa fa-home"></i>Home
+    <>
+      <div className="navbar">
+        <Link to="#" className="menu-bars">
+          <FaHamburger size="2em" onClick={toogleSideBar} color="#fff" />
+        </Link>
+      </div>
+      <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+        <ul className="nav-menu-items">
+          <li className="navbar-toggle">
+            <Link to="#" className="menu-bars">
+              <FaWindowClose size="2em" color="#fff" />
             </Link>
-          </div> */}
-          <HamburgerIcon className="fa fa-bars" id="btn"></HamburgerIcon>
-
-          {/* inpu */}
-          <SearchInput type="text" placeholder="Search a video..." />
-        </div>
-        <div className="navbar__right-section">
-          <Button onClick={showNavbar}>
-            <FaUserCircle size="2.5em" />
-          </Button>
-        </div>
+          </li>
+          <li className="nav-text">
+            <Link to="/">
+              <FaHome size="2em" />
+              <span>Home</span>
+            </Link>
+          </li>
+        </ul>
       </nav>
-    </Header>
+    </>
   );
 };
 
