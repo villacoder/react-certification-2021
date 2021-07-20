@@ -1,13 +1,12 @@
 import React from 'react';
 
 import './Home.styles.scss';
-
-import Navbar from '../../components/Navbar/Navbar.component';
+import { YoutubeData } from '../../utils/data/youtube-mock-data';
 
 function HomePage() {
   return (
     <section className="homepage">
-      <Navbar />
+      <h1>home view!</h1>
     </section>
   );
 }
