@@ -39,6 +39,12 @@ const Navbar = () => {
             <Input type="text" placeholder="search a video..." />
           </div>
           <div className="navbar__right-section">
+            <div className="toggle">
+              <label className="switch">
+                <input type="checkbox" />
+                <span className="slider round"></span>
+              </label>
+            </div>
             <Link>
               <FaUserNinja />
             </Link>
