@@ -33,7 +33,7 @@ const Navbar = () => {
       <IconContext.Provider value={{ color: '#fff', size: '3rem' }}>
         <div className="navbar">
           <div className="navbar__left-section">
-            <Link to="#" className="menu-bars">
+            <Link to="/" className="menu-bars">
               <FaHamburger onClick={toogleSideBar} />
             </Link>
             <Input type="text" placeholder="search a video..." />
@@ -45,7 +45,7 @@ const Navbar = () => {
                 <span className="slider round"></span>
               </label>
             </div>
-            <Link>
+            <Link to="/">
               <FaUserNinja />
             </Link>
           </div>
@@ -54,7 +54,7 @@ const Navbar = () => {
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className="nav-menu-items" onClick={toogleSideBar}>
             <li className="navbar-toggle">
-              <Link to="#" className="menu-bars">
+              <Link to="/" className="menu-bars">
                 <FaWindowClose />
               </Link>
             </li>
