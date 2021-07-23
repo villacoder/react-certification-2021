@@ -23,6 +23,8 @@ const Input = styled.input`
   }
 `;
 
+// ##### Im thinking about refactoring this component into another component as I think it's kind of complex to read ####
+
 const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);
 
@@ -31,13 +33,14 @@ const Navbar = () => {
   return (
     <>
       <IconContext.Provider value={{ color: '#fff', size: '3rem' }}>
-        <div className="navbar">
+        <nav className="navbar">
           <div className="navbar__left-section">
             <Link to="/" className="menu-bars">
               <FaHamburger onClick={toogleSideBar} />
             </Link>
             <Input type="text" placeholder="search a video..." />
           </div>
+
           <div className="navbar__right-section">
             <div className="toggle">
               <label className="switch">
@@ -49,7 +52,7 @@ const Navbar = () => {
               <FaUserNinja />
             </Link>
           </div>
-        </div>
+        </nav>
 
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className="nav-menu-items" onClick={toogleSideBar}>
