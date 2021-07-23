@@ -13,6 +13,10 @@ const VideoCardDiv = styled.div`
   &:hover {
     box-shadow: 10px 10px 24px 0px rgba(0, 0, 0, 0.75);
   }
+
+  @media only screen and (max-width: 670px) {
+    width: 80%;
+  }
 `;
 
 const VideoImageDiv = styled.div`

@@ -7,21 +7,31 @@ import VideoList from '../../components/VideoList/VideoList.component';
 
 const SectionContainer = styled.section`
   width: 95%;
-  margin: 0 auto;
-  padding: 1rem;
+
+  margin: auto;
 `;
 
 const VideoListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 0 2rem;
+
+  @media only screen and (max-width: 870px) {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media only screen and (max-width: 670px) {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 function HomePage() {
   return (
     <SectionContainer className="homepage-container">
       <div className="homepage__title">
-        <h2>Our videos:</h2>
+        <h2 style={{ marginLeft: '4rem' }}>Our videos:</h2>
       </div>
       <VideoListContainer className="homepage__video">
         {YoutubeData.items.map((video) => (
