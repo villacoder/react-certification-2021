@@ -6,6 +6,7 @@ import HomePage from '../../pages/Home';
 import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
 import SecretPage from '../../pages/Secret';
+import MainPage from '../../pages/Main';
 import Private from '../Private';
 import Fortune from '../Fortune';
 import Layout from '../Layout';
@@ -33,23 +34,32 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <Layout>
-          <Switch>
-            <Route exact path="/">
+        <Switch>
+          <Route exact path="/">
+            <Layout>
               <HomePage />
-            </Route>
-            <Route exact path="/login">
+            </Layout>
+          </Route>
+          <Route exact path="/login">
+            <Layout>
               <LoginPage />
-            </Route>
-            <Private exact path="/secret">
+            </Layout>
+          </Route>
+          <Private exact path="/secret">
+            <Layout>
               <SecretPage />
-            </Private>
-            <Route path="*">
+            </Layout>
+          </Private>
+          <Route exact path="/main">
+            <MainPage />
+          </Route>
+          <Route path="*">
+            <Layout>
               <NotFound />
-            </Route>
-          </Switch>
-          <Fortune />
-        </Layout>
+            </Layout>
+          </Route>
+        </Switch>
+        <Fortune />
       </AuthProvider>
     </BrowserRouter>
   );
