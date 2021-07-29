@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import { FaRegUserCircle } from 'react-icons/fa';
-
+import { Link } from 'react-router-dom';
 export const NavSearchBar = () => {
   return (
     <>
@@ -62,10 +62,10 @@ export const NavSearchBar = () => {
               defaultValue="wizeline"
             />
           </Form>
-          <Nav.Link href="/login">
-            {' '}
+          <Link to="/login">
+          {' '}
             <FaRegUserCircle color="white" size="35px" />{' '}
-          </Nav.Link>
+          </Link>
         </Navbar.Collapse>
       </Navbar>
     </>
