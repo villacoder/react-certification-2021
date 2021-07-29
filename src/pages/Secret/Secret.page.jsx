@@ -17,6 +17,10 @@ function SecretPage() {
         src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=0&autoplay=1"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       />
+      <pre>
+       
+        <Link to="/main">Go to main page →</Link>
+      </pre>
     </section>
   );
 }
