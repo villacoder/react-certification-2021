@@ -35,7 +35,6 @@ const DescriptionSpan = styled.span`
   text-align: left;
   margin: 2rem;
 `;
-
 const VideoList = ({ video }) => {
   const { title, description, thumbnails } = video;
 
