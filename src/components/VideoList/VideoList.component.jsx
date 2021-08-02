@@ -18,16 +18,17 @@ const VideoCardDiv = styled.div`
     width: 80%;
   }
 `;
-
+VideoCardDiv.displayName = 'VideoCardDiv';
 const VideoImageDiv = styled.div`
   height: 140px;
 `;
-
+VideoImageDiv.displayName = 'VideoImageDiv';
 const TitleSpan = styled.span`
   font-size: 1.6rem;
   font-weight: bold;
   margin: 2rem;
 `;
+TitleSpan.displayName = 'TitleSpan';
 
 const DescriptionSpan = styled.span`
   font-size: 1.4rem;
@@ -35,6 +36,8 @@ const DescriptionSpan = styled.span`
   text-align: left;
   margin: 2rem;
 `;
+DescriptionSpan.displayName = 'DescriptionSpan';
+
 const VideoList = ({ video }) => {
   const { title, description, thumbnails } = video;
 

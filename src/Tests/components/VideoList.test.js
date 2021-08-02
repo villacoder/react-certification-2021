@@ -4,15 +4,10 @@ import VideoList from '../../components/VideoList/VideoList.component';
 
 
 describe('Tests of the VideoList component', () => {
-    const data = [
+    const data = 
         {
-            "kind": "youtube#searchResult",
-            "etag": "_PVKwNJf_qw9nukFeRFOtQ837o0",
-            "id": {
-              "kind": "youtube#channel",
-              "videoId": "UCPGzT4wecuWM0BH9mPiulXg"
-            },
-            "snippet": {
+
+             
               "publishedAt": "2014-09-27T01:39:18Z",
               "channelId": "UCPGzT4wecuWM0BH9mPiulXg",
               "title": "Wizeline",
@@ -31,9 +26,51 @@ describe('Tests of the VideoList component', () => {
               "channelTitle": "Wizeline",
               "liveBroadcastContent": "upcoming",
               "publishTime": "2014-09-27T01:39:18Z"
-            }
+            
           }
-    ]
     
+    
+    const wrapper = shallow(< VideoList video={data}/>)
+    test('should render the VideoList component', () => {
+        expect(wrapper).toMatchSnapshot()
+    })
+    
+    
+    test('should contain the VideoCardDiv styled component', () => {
+        expect(wrapper.find('VideoCardDiv').length).toEqual(1);
+    })
+
+    test('should contain the VideoImageDiv styled component', () => {
+        expect(wrapper.find('VideoImageDiv').length).toEqual(1);
+    })
+
+    test('should contain the TitleSpan styled component', () => {
+        expect(wrapper.find('TitleSpan').length).toEqual(1);
+    })
+
+    test('should contain the DescriptionSpan styled component', () => {
+        expect(wrapper.find('DescriptionSpan').length).toEqual(1);
+    })
+
+    test('VideoImageDiv background Image should be the thumbnails.medium.url prop', () => {
+        const imgDiv = wrapper.find('VideoImageDiv')
+        expect(imgDiv.prop('style').backgroundImage).toBe(`url(${data.thumbnails.medium.url})`)
+    })
+    
+
+    test('Title Span styled component should display the title prop', () => {
+        const titleSpan = wrapper.find('TitleSpan')
+        expect(titleSpan.text()).toBe(data.title)
+    })
+
+    test('Title Span styled component should display the title prop', () => {
+        const titleSpan = wrapper.find('TitleSpan')
+        expect(titleSpan.text()).toBe(data.title)
+    })
+    
+    test('Description Span styled component should display the description prop', () => {
+        const descriptionSpan = wrapper.find('DescriptionSpan')
+        expect(descriptionSpan.text()).toBe(data.description)
+    })
 })
 
