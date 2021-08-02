@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tests of the < HomePage/> component should show the < HomePage/> component correctly 1`] = `
-<styled.section
+<SectionContainer
   className="homepage-container"
 >
   <div
@@ -18,7 +18,7 @@ exports[`Tests of the < HomePage/> component should show the < HomePage/> compon
       Our videos:
     </h2>
   </div>
-  <styled.div
+  <VideoListContainer
     className="homepage__video"
   >
     <VideoList
@@ -790,6 +790,6 @@ exports[`Tests of the < HomePage/> component should show the < HomePage/> compon
         }
       }
     />
-  </styled.div>
-</styled.section>
+  </VideoListContainer>
+</SectionContainer>
 `;

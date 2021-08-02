@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests of the VideoList component should render the component correctly 1`] = `
+<styled.div>
+  <styled.div
+    style={
+      Object {
+        "backgroundImage": "url(https://i.ytimg.com/vi/nmXMgqjQzls/mqdefault.jpg)",
+        "backgroundPosition": "center",
+        "backgroundRepeat": "no-repeat",
+        "backgroundSize": "cover",
+        "borderTopLeftRadius": "0.4rem",
+        "borderTopRightRadius": "0.4rem",
+      }
+    }
+  />
+  <styled.span>
+    test title
+  </styled.span>
+  <styled.span>
+    test description
+  </styled.span>
+</styled.div>
+`;

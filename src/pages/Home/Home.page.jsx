@@ -9,7 +9,7 @@ const SectionContainer = styled.section`
   width: 95%;
   margin: auto;
 `;
-
+SectionContainer.displayName = 'SectionContainer';
 const VideoListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -25,6 +25,8 @@ const VideoListContainer = styled.div`
     justify-content: center;
   }
 `;
+
+VideoListContainer.displayName = 'VideoListContainer';
 
 function HomePage() {
   return (

@@ -1,13 +1,10 @@
-import React from 'react'
-import {shallow} from 'enzyme'
-import 'jest-styled-components'
-import renderer from 'react-test-renderer'
-import Home from '../../../pages/Home/Home.page';
+import React from 'react';
+import { shallow } from 'enzyme';
+import VideoList from '../../components/VideoList/VideoList.component';
 
-describe('Tests of the < HomePage/> component', () => {
-    
-    const wrapper = shallow(< Home/>)
-    let data = [
+
+describe('Tests of the VideoList component', () => {
+    const data = [
         {
             "kind": "youtube#searchResult",
             "etag": "_PVKwNJf_qw9nukFeRFOtQ837o0",
@@ -37,18 +34,6 @@ describe('Tests of the < HomePage/> component', () => {
             }
           }
     ]
-
-    test('should show the < HomePage/> component correctly', () => {
-        expect(wrapper).toMatchSnapshot();
-    })
-
-    test('should contain the SectionContainer styled component', () => {
-        expect(wrapper.find('SectionContainer').length).toEqual(1);
-    })
     
-
-    test('should contain the VideoListContainer styled component', () => {
-        expect(wrapper.find('VideoListContainer').length).toEqual(1);
-
-    })
 })
+
