@@ -7,7 +7,6 @@ html {
   scroll-behavior: smooth;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-
 *,
 *::before,
 *::after {
@@ -28,7 +27,7 @@ body {
 
 .separator::before {
   content: '•';
-  color: white;
+  color: black;
   padding: 0.4rem;
 }
 
@@ -54,5 +53,6 @@ a:active {
   display: flex;
   justify-content: center;
 }
+
 
 

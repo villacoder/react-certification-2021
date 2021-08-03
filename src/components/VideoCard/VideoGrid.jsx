@@ -1,47 +1,58 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import YouTube from 'simple-youtube-api';
 import Grid from '@material-ui/core/Grid';
-import { videoData } from '../../mock/videoData';
-import { VideoCard } from './VideoCard';
+import config from '../../config';
+import VideoCard from './VideoCard';
 
-export const VideoGrid = () => {
-  function FormRow() {
-    return videoData.items
-      .filter(function (vid) {
-        if (vid.id.kind === 'youtube#channel') {
-          return false; // skip
-        }
-        return true;
-      })
-      .map((vi) => {
-        return (
-          <>
-            <Grid
-              item
-              xs={3}
-              container
-              direction="row"
-              justifyContent="center"
-              alignItems="baseline"
-            >
-              <VideoCard
-                key={vi.snippet.publishTime}
-                title={vi.snippet.title}
-                thumbnail={vi.snippet.thumbnails.high.url}
-                description={vi.snippet.description}
-              />
-            </Grid>
-          </>
-        );
-      });
-  }
+const youtube = new YouTube(config.apiKey);
+export const VideoGrid = ({
+  searchString,
+  selectedVideo,
+  setSelectedVideo,
+  setPlayVideo,
+}) => {
+  const [videoList, setVideoList] = useState([]);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const callApi = async () => {
+      const result = await youtube.searchVideos(searchString, 20);
+
+      if (result.length === 0) {
+        setError(true);
+      } else {
+        setError(false);
+      }
+      setVideoList(result);
+    };
+    callApi();
+  }, [searchString, selectedVideo]);
+
+  const selectedVideoCallback = (videoDetail) => {
+    setSelectedVideo(videoDetail);
+  };
 
   return (
     <div>
-      <Grid container spacing={1}>
-        <Grid container item xs={14} spacing={3}>
-          <FormRow />
+      {!error && (
+        <Grid
+          container
+          item
+          xs={12}
+          sm={12}
+          spacing={3}
+          direction="row"
+          alignItems="stretch"
+          justifyContent="center"
+        >
+          <VideoCard
+            videoList={videoList}
+            changeSelection={selectedVideoCallback}
+            selectedVideoId={selectedVideo.id}
+            setPlayVideo={setPlayVideo}
+          />
         </Grid>
-      </Grid>
+      )}
     </div>
   );
 };
