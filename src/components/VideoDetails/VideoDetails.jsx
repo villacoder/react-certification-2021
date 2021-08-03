@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Col, ListGroup } from 'react-bootstrap';
 import YouTube from 'simple-youtube-api';
 import VideoPreview from './VideoPreview';
-import config from '../../config';
 import Suggestions from './Suggestions';
 
-const youtube = new YouTube(config.apiKey);
+const youtube = new YouTube(process.env.REACT_APP_API_KEY_YOUTUBE);
 
 export const VideoDetails = ({ selectedVideo, setSelectedVideo }) => {
   const [videoList, setVideoList] = useState([]);

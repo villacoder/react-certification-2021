@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import YouTube from 'simple-youtube-api';
 import Grid from '@material-ui/core/Grid';
-import config from '../../config';
 import VideoCard from './VideoCard';
 
-const youtube = new YouTube(config.apiKey);
+const youtube = new YouTube(process.env.REACT_APP_API_KEY_YOUTUBE);
 export const VideoGrid = ({
   searchString,
   selectedVideo,
