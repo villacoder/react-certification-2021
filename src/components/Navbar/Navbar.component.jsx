@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FaHamburger, FaWindowClose, FaHome, FaUserNinja } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import './Navbar.styles.scss';
 import styled from 'styled-components';
+import { SearchContext } from '../../providers/Search/Search.provider';
 
 const Input = styled.input`
   background-color: #060b26;
@@ -27,8 +28,9 @@ const Input = styled.input`
 
 const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);
-
   const toogleSideBar = () => setSidebar(!sidebar);
+
+  const { search, setSearch } = useContext(SearchContext);
 
   return (
     <>
@@ -38,7 +40,13 @@ const Navbar = () => {
             <Link to="/" className="menu-bars">
               <FaHamburger onClick={toogleSideBar} />
             </Link>
-            <Input type="text" placeholder="search a video..." />
+            <Input
+              type="text"
+              name="search"
+              placeholder="search a video..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
           </div>
 
           <div className="navbar__right-section">

@@ -2,7 +2,6 @@ import React from 'react';
 import './Home.styles.css';
 import styled from 'styled-components';
 import { YoutubeData } from '../../data/youtube-mock-data';
-
 import VideoList from '../../components/VideoList/VideoList.component';
 
 const SectionContainer = styled.section`
@@ -25,7 +24,6 @@ const VideoListContainer = styled.div`
     justify-content: center;
   }
 `;
-
 VideoListContainer.displayName = 'VideoListContainer';
 
 function HomePage() {
