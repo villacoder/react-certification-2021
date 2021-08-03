@@ -67,10 +67,12 @@ export const NavSearchBar = ({ setPassToChild, setSearchButton, setPlayVideo }) 
             onChange={(event) => setSearchTerm(event.target.value)}
           />
         </Form>{' '}
-        <Link to="/login">
-          {' '}
-          <FaRegUserCircle color="white" size="35px" />{' '}
-        </Link>
+        <Nav justifyContent="flex-end">
+          <Link to="/login">
+            {' '}
+            <FaRegUserCircle color="white" size="35px" />{' '}
+          </Link>
+        </Nav>
       </Navbar.Collapse>
     </Navbar>
   );
