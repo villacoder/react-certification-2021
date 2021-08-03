@@ -1,18 +1,15 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { SearchContext } from '../Search/Search.provider';
+import React, { createContext, useEffect, useState } from 'react';
 export const VideoListContext = createContext();
 const VideoListProvider = (props) => {
-  const { search } = useContext(SearchContext);
   const [videos, setVideos] = useState([]);
-  console.log(videos);
+  const [search, setSearch] = useState('wizeline');
 
   useEffect(() => {
     const getVideos = async () => {
       try {
-        const url = `https://www.googleapis.com/youtube/v3/search?id=7lCDEYXw3mM&key=AIzaSyBAYPio9KXpYuABx-53XHwdxKjOVxCn1p8&part=snippet&q=${search}&maxResults=23`;
+        const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&&key=${process.env.REACT_APP_GOOGLE_APP_API_KEY}&type=video&maxResults=23&q=${search}`;
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data.items);
         setVideos(data.items);
       } catch (error) {
         throw new Error(error);
@@ -22,7 +19,14 @@ const VideoListProvider = (props) => {
   }, [search]);
 
   return (
-    <VideoListContext.Provider value={{}}>{props.children}</VideoListContext.Provider>
+    <VideoListContext.Provider
+      value={{
+        setSearch,
+        videos,
+      }}
+    >
+      {props.children}
+    </VideoListContext.Provider>
   );
 };
 

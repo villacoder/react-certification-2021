@@ -1,11 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-
 import { FaHamburger, FaWindowClose, FaHome, FaUserNinja } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import './Navbar.styles.scss';
 import styled from 'styled-components';
-import { SearchContext } from '../../providers/Search/Search.provider';
+import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 
 const Input = styled.input`
   background-color: #060b26;
@@ -24,13 +23,20 @@ const Input = styled.input`
   }
 `;
 
+Input.displayName = 'Input';
+
 // ##### Im thinking about refactoring this component into another component as I think it's kind of complex to read ####
 
 const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);
+  const [inputValue, setInputValue] = useState('');
   const toogleSideBar = () => setSidebar(!sidebar);
+  const { setSearch } = useContext(VideoListContext);
 
-  const { search, setSearch } = useContext(SearchContext);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearch(inputValue);
+  };
 
   return (
     <>
@@ -40,13 +46,15 @@ const Navbar = () => {
             <Link to="/" className="menu-bars">
               <FaHamburger onClick={toogleSideBar} />
             </Link>
-            <Input
-              type="text"
-              name="search"
-              placeholder="search a video..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
+            <form onSubmit={handleSubmit}>
+              <Input
+                type="text"
+                name="search"
+                placeholder="search a video..."
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+              />
+            </form>
           </div>
 
           <div className="navbar__right-section">
