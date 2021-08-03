@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import { FaRegUserCircle } from 'react-icons/fa';
 
@@ -65,11 +66,11 @@ export const NavSearchBar = ({ setPassToChild, setSearchButton, setPlayVideo }) 
             }}
             onChange={(event) => setSearchTerm(event.target.value)}
           />
-        </Form>
-        <Nav.Link href="/login">
+        </Form>{' '}
+        <Link to="/login">
           {' '}
           <FaRegUserCircle color="white" size="35px" />{' '}
-        </Nav.Link>
+        </Link>
       </Navbar.Collapse>
     </Navbar>
   );
