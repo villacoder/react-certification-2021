@@ -2,7 +2,6 @@ import React, { useContext, Suspense, lazy } from 'react';
 import './Home.styles.css';
 import styled from 'styled-components';
 import { css } from '@emotion/react';
-// import VideoList from '../../components/VideoList/VideoList.component';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 import GridLoader from 'react-spinners/ClipLoader';
 const VideoList = lazy(() => import('../../components/VideoList/VideoList.component'));
@@ -37,6 +36,7 @@ const override = css`
 
 const HomePage = () => {
   const { videos } = useContext(VideoListContext);
+
   return (
     <SectionContainer className="homepage-container">
       <div className="homepage__title">
@@ -45,7 +45,7 @@ const HomePage = () => {
       <Suspense fallback={<GridLoader size={150} css={override} />}>
         <VideoListContainer className="homepage__video">
           {videos.map((video) => (
-            <VideoList key={video.id.videoId} video={video.snippet} />
+            <VideoList key={video.id.videoId} video={video} />
           ))}
         </VideoListContainer>
       </Suspense>

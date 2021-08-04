@@ -6,9 +6,9 @@ import VideoListProvider from '../../providers/VideoList/VideoList.provider';
 import HomePage from '../../pages/Home';
 import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
-import SecretPage from '../../pages/Secret';
-import Private from '../Private';
+// import Private from '../Private';
 import Layout from '../Layout';
+import VideoDetails from '../VideoDetails/VideoDetails.component';
 
 function App() {
   return (
@@ -18,15 +18,15 @@ function App() {
           <Layout>
             <Navbar />
             <Switch>
-              <Route exact path="/">
-                <HomePage />
+              <Route exact path="/video/:id">
+                <VideoDetails />
               </Route>
               <Route exact path="/login">
                 <LoginPage />
               </Route>
-              <Private exact path="/secret">
-                <SecretPage />
-              </Private>
+              <Route exact path="/">
+                <HomePage />
+              </Route>
               <Route path="*">
                 <NotFound />
               </Route>

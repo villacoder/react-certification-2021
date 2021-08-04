@@ -43,9 +43,9 @@ const Navbar = () => {
       <IconContext.Provider value={{ color: '#fff', size: '3rem' }}>
         <nav className="navbar">
           <div className="navbar__left-section">
-            <Link to="/" className="menu-bars">
+            <div to="/" className="menu-bars">
               <FaHamburger onClick={toogleSideBar} />
-            </Link>
+            </div>
             <form onSubmit={handleSubmit}>
               <Input
                 type="text"
