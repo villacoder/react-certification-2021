@@ -1,8 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, Suspense, lazy } from 'react';
 import './Home.styles.css';
 import styled from 'styled-components';
-import VideoList from '../../components/VideoList/VideoList.component';
+import { css } from '@emotion/react';
+// import VideoList from '../../components/VideoList/VideoList.component';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
+import GridLoader from 'react-spinners/ClipLoader';
+const VideoList = lazy(() => import('../../components/VideoList/VideoList.component'));
 
 const SectionContainer = styled.section`
   width: 95%;
@@ -26,6 +29,12 @@ const VideoListContainer = styled.div`
 `;
 VideoListContainer.displayName = 'VideoListContainer';
 
+const override = css`
+  display: block;
+  margin: 20rem auto;
+  border-color: #060b26;
+`;
+
 const HomePage = () => {
   const { videos } = useContext(VideoListContext);
   return (
@@ -33,11 +42,13 @@ const HomePage = () => {
       <div className="homepage__title">
         <h2 style={{ marginLeft: '4rem', marginTop: '2rem' }}>Our videos:</h2>
       </div>
-      <VideoListContainer className="homepage__video">
-        {videos.map((video) => (
-          <VideoList key={video.id.videoId} video={video.snippet} />
-        ))}
-      </VideoListContainer>
+      <Suspense fallback={<GridLoader size={150} css={override} />}>
+        <VideoListContainer className="homepage__video">
+          {videos.map((video) => (
+            <VideoList key={video.id.videoId} video={video.snippet} />
+          ))}
+        </VideoListContainer>
+      </Suspense>
     </SectionContainer>
   );
 };
