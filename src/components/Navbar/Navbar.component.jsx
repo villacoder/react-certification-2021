@@ -3,27 +3,8 @@ import { Link } from 'react-router-dom';
 import { FaHamburger, FaWindowClose, FaHome, FaUserNinja } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import './Navbar.styles.scss';
-import styled from 'styled-components';
+import { Input } from './styledComponents';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
-
-const Input = styled.input`
-  background-color: #060b26;
-  border: none;
-  color: #fff;
-  margin-left: 2rem;
-  padding: 0.5rem;
-  width: 60%;
-  transition: all 0.3s ease;
-  &::placeholder {
-    color: #fff;
-  }
-  &:hover {
-    width: 100%;
-    border-bottom: 2px solid #fff;
-  }
-`;
-
-Input.displayName = 'Input';
 
 // ##### Im thinking about refactoring this component into another component as I think it's kind of complex to read ####
 
@@ -36,6 +17,7 @@ const Navbar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSearch(inputValue);
+    setInputValue('');
   };
 
   return (
@@ -43,7 +25,7 @@ const Navbar = () => {
       <IconContext.Provider value={{ color: '#fff', size: '3rem' }}>
         <nav className="navbar">
           <div className="navbar__left-section">
-            <div to="/" className="menu-bars">
+            <div className="menu-bars">
               <FaHamburger onClick={toogleSideBar} />
             </div>
             <form onSubmit={handleSubmit}>
@@ -72,10 +54,11 @@ const Navbar = () => {
 
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className="nav-menu-items" onClick={toogleSideBar}>
-            <li className="navbar-toggle">
-              <Link to="/" className="menu-bars">
-                <FaWindowClose />
-              </Link>
+            <li
+              className="navbar-toggle"
+              style={{ cursor: 'pointer', marginLeft: '2rem' }}
+            >
+              <FaWindowClose />
             </li>
             <li className="nav-text">
               <Link to="/">
