@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 export const useFetch = (id) => {
-    const [singleVideo, setSingleVideo] = useState({})
+    const [singleVideo, setSingleVideo] = useState([])
 
-    console.log(id);
     useEffect(() => {
         const getSingleVideo = async () => {
             try {
