@@ -1,44 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-
 import { FaHamburger, FaWindowClose, FaHome, FaUserNinja } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import './Navbar.styles.scss';
-import styled from 'styled-components';
-
-const Input = styled.input`
-  background-color: #060b26;
-  border: none;
-  color: #fff;
-  margin-left: 2rem;
-  padding: 0.5rem;
-  width: 60%;
-  transition: all 0.3s ease;
-  &::placeholder {
-    color: #fff;
-  }
-  &:hover {
-    width: 100%;
-    border-bottom: 2px solid #fff;
-  }
-`;
+import { Input } from './styledComponents';
+import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 
 // ##### Im thinking about refactoring this component into another component as I think it's kind of complex to read ####
 
 const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);
-
+  const [inputValue, setInputValue] = useState('');
   const toogleSideBar = () => setSidebar(!sidebar);
+  const { setSearch } = useContext(VideoListContext);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearch(inputValue);
+    setInputValue('');
+  };
 
   return (
     <>
       <IconContext.Provider value={{ color: '#fff', size: '3rem' }}>
         <nav className="navbar">
           <div className="navbar__left-section">
-            <Link to="/" className="menu-bars">
+            <div className="menu-bars">
               <FaHamburger onClick={toogleSideBar} />
-            </Link>
-            <Input type="text" placeholder="search a video..." />
+            </div>
+            <form onSubmit={handleSubmit}>
+              <Input
+                type="text"
+                name="search"
+                placeholder="search a video..."
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+              />
+            </form>
           </div>
 
           <div className="navbar__right-section">
@@ -56,10 +54,11 @@ const Navbar = () => {
 
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className="nav-menu-items" onClick={toogleSideBar}>
-            <li className="navbar-toggle">
-              <Link to="/" className="menu-bars">
-                <FaWindowClose />
-              </Link>
+            <li
+              className="navbar-toggle"
+              style={{ cursor: 'pointer', marginLeft: '2rem' }}
+            >
+              <FaWindowClose />
             </li>
             <li className="nav-text">
               <Link to="/">
