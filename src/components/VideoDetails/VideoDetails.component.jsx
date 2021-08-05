@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useParams } from 'react-router';
-import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 import { useFetch } from '../../utils/hooks/useFetch';
 import './VideoDetails.styles.css';
+import { TitleSpan, DescriptionSpan } from './styledComponents';
+import RecommendedVideos from '../RecommendedVideos';
+
 const VideoDetails = () => {
   const { id } = useParams();
-  const { videos } = useContext(VideoListContext);
-
   const { singleVideo } = useFetch(id);
 
   return (
@@ -18,15 +18,15 @@ const VideoDetails = () => {
           allowFullScreen
           title="test"
         ></iframe>
-        {singleVideo.length > 0 ? (
+        {singleVideo.length > 0 && (
           <div className="video-details-selected-video__text">
-            <span>{singleVideo[0].snippet.title}</span>{' '}
-            <span>{singleVideo[0].snippet.description}</span>{' '}
+            <TitleSpan>{singleVideo[0].snippet.title}</TitleSpan>
+            <DescriptionSpan>{singleVideo[0].snippet.description}</DescriptionSpan>
           </div>
-        ) : null}
+        )}
       </div>
       <div className="video-details-similar-videos">
-        <h1>placeholder content</h1>
+        <RecommendedVideos />
       </div>
     </div>
   );
