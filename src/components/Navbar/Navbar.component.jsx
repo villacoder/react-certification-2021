@@ -5,6 +5,7 @@ import { IconContext } from 'react-icons/lib';
 import './Navbar.styles.scss';
 import { Input } from './styledComponents';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
+import { useHistory } from 'react-router-dom';
 
 // ##### Im thinking about refactoring this component into another component as I think it's kind of complex to read ####
 
@@ -13,11 +14,13 @@ const Navbar = () => {
   const [inputValue, setInputValue] = useState('');
   const toogleSideBar = () => setSidebar(!sidebar);
   const { setSearch } = useContext(VideoListContext);
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setSearch(inputValue);
     setInputValue('');
+    history.push('/');
   };
 
   return (
