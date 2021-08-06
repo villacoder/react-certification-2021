@@ -27,7 +27,6 @@ function App() {
           <Layout>
             <Navbar />
             <ScrollToTop />
-
             <Switch>
               <Route exact path="/video/:id">
                 <Suspense fallback={<GridLoader size={150} css={override} />}>
