@@ -2,10 +2,9 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import VideoList from '../../components/VideoList/VideoList.component';
 
-
 describe('Tests of the VideoList component', () => {
-    const data = 
-    {
+
+    const data =  {
         "kind": "youtube#searchResult",
         "etag": "_PVKwNJf_qw9nukFeRFOtQ837o0",
         "id": {

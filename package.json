@@ -24,7 +24,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:coverage": "npm run test -- --coverage --watchAll=false",
+    "test:coverage": "npm run test -- --coverage --watchAll",
     "eject": "react-scripts eject",
     "lint": "eslint ./src --ext .js,.jsx",
     "lint:fix": "eslint ./src --ext .js,.jsx --fix"
@@ -72,11 +72,8 @@
     }
   },
   "jest": {
-    "coveragePathIgnorePatterns": [
-      "./node_modules",
-      "./public",
-      "./src/styles",
-      "./src/index.js"
+    "collectCoverageFrom": [
+      "src/Tests/*.js"
     ]
   }
 }
