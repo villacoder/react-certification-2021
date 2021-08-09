@@ -8,7 +8,6 @@ import RecommendedVideos from '../RecommendedVideos';
 const VideoDetails = () => {
   const { id } = useParams();
   const { singleVideo } = useFetch(id);
-
   return (
     <div className="video-details-container">
       <div className="video-details-selected-video">
@@ -26,7 +25,8 @@ const VideoDetails = () => {
         )}
       </div>
       <div className="video-details-similar-videos">
-        <RecommendedVideos />
+        {' '}
+        <RecommendedVideos />{' '}
       </div>
     </div>
   );

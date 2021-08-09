@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests of the VideoDetials component Should render the VideoDetails component correctly 1`] = `
+<div
+  className="video-details-container"
+>
+  <div
+    className="video-details-selected-video"
+  >
+    <iframe
+      allowFullScreen={true}
+      frameBorder="0"
+      src="https://www.youtube.com/embed/Po3VwR_NNGk"
+      title="test"
+    />
+  </div>
+  <div
+    className="video-details-similar-videos"
+  />
+</div>
+`;
