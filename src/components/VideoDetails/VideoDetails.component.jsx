@@ -25,8 +25,7 @@ const VideoDetails = () => {
         )}
       </div>
       <div className="video-details-similar-videos">
-        {' '}
-        <RecommendedVideos />{' '}
+        <RecommendedVideos />
       </div>
     </div>
   );
