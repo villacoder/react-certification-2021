@@ -7,14 +7,13 @@ const VideoList = lazy(() => import('../../components/VideoList/VideoList.compon
 
 const HomePage = () => {
   const { videos } = useContext(VideoListContext);
-
   return (
-    <SectionContainer className="homepage-container">
-      <div className="homepage__title">
+    <SectionContainer>
+      <div>
         <h2 style={{ marginLeft: '4rem', marginTop: '2rem' }}>Our videos:</h2>
       </div>
       <Suspense fallback={<GridLoader size={150} css={override} />}>
-        <VideoListContainer className="homepage__video">
+        <VideoListContainer>
           {videos.map((video) => (
             <VideoList key={video.id.videoId} video={video} />
           ))}

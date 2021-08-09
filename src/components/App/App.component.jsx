@@ -9,6 +9,7 @@ import NotFound from '../../pages/NotFound';
 import Layout from '../Layout';
 import GridLoader from 'react-spinners/ClipLoader';
 import { css } from '@emotion/react';
+import ScrollToTop from '../../utils/scrollToTop';
 
 const VideoDetails = lazy(() => import('../VideoDetails/VideoDetails.component'));
 
@@ -25,7 +26,11 @@ function App() {
         <VideoListProvider>
           <Layout>
             <Navbar />
+            <ScrollToTop />
             <Switch>
+              <Route exact path="/">
+                <HomePage />
+              </Route>
               <Route exact path="/video/:id">
                 <Suspense fallback={<GridLoader size={150} css={override} />}>
                   <VideoDetails />
@@ -33,9 +38,6 @@ function App() {
               </Route>
               <Route exact path="/login">
                 <LoginPage />
-              </Route>
-              <Route exact path="/">
-                <HomePage />
               </Route>
               <Route path="*">
                 <NotFound />

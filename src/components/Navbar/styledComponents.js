@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 
-export const Input = styled.input`
+export const InputText = styled.input`
 background-color: #060b26;
 border: none;
 color: #fff;
@@ -17,4 +17,4 @@ transition: all 0.3s ease;
   border-bottom: 2px solid #fff;
 }
 `;
-Input.displayName = 'Input';
+InputText.displayName = 'InputText';
