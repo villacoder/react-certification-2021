@@ -7,7 +7,6 @@ const VideoList = lazy(() => import('../../components/VideoList/VideoList.compon
 
 const HomePage = () => {
   const { videosState } = useContext(VideoListContext);
-  console.log(videosState);
   const { posts = [] } = videosState;
 
   return (
