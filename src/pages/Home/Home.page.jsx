@@ -6,7 +6,9 @@ import GridLoader from 'react-spinners/ClipLoader';
 const VideoList = lazy(() => import('../../components/VideoList/VideoList.component'));
 
 const HomePage = () => {
-  const { videos } = useContext(VideoListContext);
+  const { state } = useContext(VideoListContext);
+  const { posts = [] } = state;
+
   return (
     <SectionContainer>
       <div>
@@ -14,7 +16,7 @@ const HomePage = () => {
       </div>
       <Suspense fallback={<GridLoader size={150} css={override} />}>
         <VideoListContainer>
-          {videos.map((video) => (
+          {posts.map((video) => (
             <VideoList key={video.id.videoId} video={video} />
           ))}
         </VideoListContainer>
