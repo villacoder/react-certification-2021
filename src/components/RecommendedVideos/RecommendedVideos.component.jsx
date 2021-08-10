@@ -4,8 +4,8 @@ import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
 import './RecommendedVideos.styles.css';
 import { TitleSpan } from './styledComponents';
 const RecommendedVideos = () => {
-  const { state } = useContext(VideoListContext);
-  const { posts } = state;
+  const { videosState } = useContext(VideoListContext);
+  const { posts } = videosState;
   const recommendedVideos = posts.slice(0, 8);
   return (
     <>

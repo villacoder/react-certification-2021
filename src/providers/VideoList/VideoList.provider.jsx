@@ -10,7 +10,7 @@ const VideoListProvider = (props) => {
     error: '',
   };
 
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [videosState, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     const getVideos = async () => {
@@ -31,7 +31,7 @@ const VideoListProvider = (props) => {
     <VideoListContext.Provider
       value={{
         setSearch,
-        state,
+        videosState,
       }}
     >
       {props.children}

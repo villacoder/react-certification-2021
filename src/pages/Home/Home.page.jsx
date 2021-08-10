@@ -6,8 +6,9 @@ import GridLoader from 'react-spinners/ClipLoader';
 const VideoList = lazy(() => import('../../components/VideoList/VideoList.component'));
 
 const HomePage = () => {
-  const { state } = useContext(VideoListContext);
-  const { posts = [] } = state;
+  const { videosState } = useContext(VideoListContext);
+  console.log(videosState);
+  const { posts = [] } = videosState;
 
   return (
     <SectionContainer>
