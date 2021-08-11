@@ -1,6 +1,6 @@
 const black = '#363537'
 const lightGrey = '#e2e2e2'
-const white = '#fafafa'
+const white = '#CCCCCC'
 
 export const light = {
     text: black,

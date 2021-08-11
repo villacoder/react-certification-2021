@@ -83,7 +83,7 @@ const Navbar = () => {
             <li className="nav-text">
               <Link to="/">
                 <FaHome />
-                <span>Home</span>
+                <span style={{ color: '#fff' }}>Home</span>
               </Link>
             </li>
           </ul>
