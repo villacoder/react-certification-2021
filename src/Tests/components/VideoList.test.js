@@ -1,9 +1,13 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import VideoList from '../../components/VideoList/VideoList.component';
-
+import Context from '../../providers/Theme/Theme.provider'
+import { MemoryRouter } from 'react-router';
 describe('Tests of the VideoList component', () => {
 
+    const state = {
+      isDark: true
+    }
     const data =  {
         "kind": "youtube#searchResult",
         "etag": "_PVKwNJf_qw9nukFeRFOtQ837o0",
@@ -32,16 +36,35 @@ describe('Tests of the VideoList component', () => {
           "publishTime": "2014-09-27T01:39:18Z"
         }
       }
-    
-    const wrapper = shallow(< VideoList video={data}/>)
+    let wrapper;
+    beforeEach(() => {
+      jest.clearAllMocks()
+      wrapper = mount(
+      <Context.Provider
+        value={{state}}
+      >
+        <MemoryRouter>
+        < VideoList video={data}/>
+        </MemoryRouter>
+      </Context.Provider>)
+    })
+
     test('should render the VideoList component', () => {
         expect(wrapper).toMatchSnapshot()
     })
     
     
-    test('should contain the VideoCardDiv styled component', () => {
-        expect(wrapper.find('VideoCardDiv').length).toEqual(1);
+    test('shouldnt display the VideoCardDark component', () => {
+      let darkDiv = wrapper.find('VideoCardDivDark')
+      expect(darkDiv.length).toBe(0)
     })
+
+    test('should display a VideoCardLight component', () => {
+      state.isDark = true;
+      let lightDiv = wrapper.find('VideoCardDivLight')
+      expect(lightDiv.length).toBe(1)
+    })
+    
 
     test('should contain the VideoImageDiv styled component', () => {
         expect(wrapper.find('VideoImageDiv').length).toEqual(1);

@@ -15,7 +15,6 @@ const VideoList = ({ video }) => {
   const { id } = video;
   const { videoId } = id;
   const { state } = useContext(Context);
-  console.log(state);
   return (
     <Link to={`/video/${videoId}`} style={{ textDecoration: 'none', color: '#000' }}>
       {state.isDark ? (

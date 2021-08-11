@@ -2,25 +2,33 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Navbar from '../../components/Navbar/Navbar.component'
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
+import Context from '../../providers/Theme/Theme.provider'
 import { MemoryRouter } from 'react-router';
 
 describe('Tests of the Navbar component', () => {
     
     const setSearch = jest.fn()
+    const dispatch = jest.fn()
     let wrapper;
     beforeEach(() =>  {
         jest.clearAllMocks();
         wrapper = mount(
-            <VideoListContext.Provider
+            <Context.Provider
                 value={{
-                    setSearch
+                    dispatch
                 }}
             >
-                <MemoryRouter>
-                    <Navbar/>
-                </MemoryRouter>
-            </VideoListContext.Provider>)
-    });
+                <VideoListContext.Provider
+                    value={{
+                        setSearch
+                    }}
+                    >
+                    <MemoryRouter>
+                        <Navbar/>
+                    </MemoryRouter>
+                </VideoListContext.Provider>
+            </Context.Provider>)
+    })
 
     test('should render the Navbar component correctly', () => {
         expect(wrapper).toMatchSnapshot()
