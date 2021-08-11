@@ -28,6 +28,7 @@ const RecommendedVideos = () => {
                 <TitleSpan>{video.snippet.title}</TitleSpan>
               </div>
             </div>
+            <hr style={{ width: '80%', margin: '0 auto', color: '#060B26' }} />
           </Link>
         ))}
       </div>

@@ -50,12 +50,21 @@ exports[`Tests of the VideoDetials component should display the component correc
             className="recommended-video__card-text"
           >
             <span
-              className="sc-dlnjwi jkBdIj"
+              className="sc-dlnjwi ksDChm"
             >
               Wizeline
             </span>
           </div>
         </div>
+        <hr
+          style={
+            Object {
+              "color": "#060B26",
+              "margin": "0 auto",
+              "width": "80%",
+            }
+          }
+        />
       </a>
       <a
         href="/video/nmXMgqjQzls"
@@ -87,12 +96,21 @@ exports[`Tests of the VideoDetials component should display the component correc
             className="recommended-video__card-text"
           >
             <span
-              className="sc-dlnjwi jkBdIj"
+              className="sc-dlnjwi ksDChm"
             >
               Video Tour | Welcome to Wizeline Guadalajara
             </span>
           </div>
         </div>
+        <hr
+          style={
+            Object {
+              "color": "#060B26",
+              "margin": "0 auto",
+              "width": "80%",
+            }
+          }
+        />
       </a>
     </div>
   </div>

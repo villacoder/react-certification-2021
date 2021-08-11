@@ -8,5 +8,10 @@ TitleSpan.displayName = 'TitleSpan';
 
 export const DescriptionSpan = styled.span`
   font-size: 1.6rem;
+
+  @media only screen and (max-width: 700px) {
+    display: none;
+    margin-bottom: 3rem;
+  }
 `;
 DescriptionSpan.displayName = 'DescriptionSpan';

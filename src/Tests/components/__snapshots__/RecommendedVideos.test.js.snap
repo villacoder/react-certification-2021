@@ -34,12 +34,21 @@ exports[`Tests of the RecommendedVideos component should render the component co
         className="recommended-video__card-text"
       >
         <span
-          className="sc-bdnxRM ibMbqm"
+          className="sc-bdnxRM eNjdHH"
         >
           Wizeline
         </span>
       </div>
     </div>
+    <hr
+      style={
+        Object {
+          "color": "#060B26",
+          "margin": "0 auto",
+          "width": "80%",
+        }
+      }
+    />
   </a>
   <a
     href="/video/nmXMgqjQzls"
@@ -71,12 +80,21 @@ exports[`Tests of the RecommendedVideos component should render the component co
         className="recommended-video__card-text"
       >
         <span
-          className="sc-bdnxRM ibMbqm"
+          className="sc-bdnxRM eNjdHH"
         >
           Video Tour | Welcome to Wizeline Guadalajara
         </span>
       </div>
     </div>
+    <hr
+      style={
+        Object {
+          "color": "#060B26",
+          "margin": "0 auto",
+          "width": "80%",
+        }
+      }
+    />
   </a>
 </div>
 `;
