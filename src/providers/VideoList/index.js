@@ -1,1 +1,1 @@
-export { default, useAuth } from './Search.provider';
+export {  VideoListProvider } from './VideoList.provider';

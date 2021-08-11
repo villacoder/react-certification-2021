@@ -12,6 +12,7 @@ import { IconContext } from 'react-icons/lib';
 import './Navbar.styles.scss';
 import { InputText } from './styledComponents';
 import { VideoListContext } from '../../providers/VideoList/VideoList.provider';
+import Context from '../../providers/Theme/Theme.provider';
 import { useHistory } from 'react-router-dom';
 
 // ##### Im thinking about refactoring this component into another component as I think it's kind of complex to read ####
@@ -21,6 +22,7 @@ const Navbar = () => {
   const [inputValue, setInputValue] = useState('');
   const toogleSideBar = () => setSidebar(!sidebar);
   const { setSearch } = useContext(VideoListContext);
+  const { dispatch } = useContext(Context);
   const history = useHistory();
 
   const handleSubmit = (e) => {
@@ -28,6 +30,12 @@ const Navbar = () => {
     setSearch(inputValue);
     setInputValue('');
     history.push('/');
+  };
+
+  const handleClick = () => {
+    dispatch({
+      type: 'TOGGLE_DARK_MODE',
+    });
   };
 
   return (
@@ -53,7 +61,7 @@ const Navbar = () => {
             <div className="toggle">
               <FaRegMoon size={20} />
               <label className="switch">
-                <input type="checkbox" />
+                <input type="checkbox" onClick={handleClick} />
                 <span className="slider round"></span>
               </label>
               <FaSun size={20} />
