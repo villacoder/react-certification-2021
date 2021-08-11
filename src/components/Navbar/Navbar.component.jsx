@@ -1,6 +1,13 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { FaHamburger, FaWindowClose, FaHome, FaUserNinja } from 'react-icons/fa';
+import {
+  FaHamburger,
+  FaWindowClose,
+  FaHome,
+  FaUserNinja,
+  FaSun,
+  FaRegMoon,
+} from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import './Navbar.styles.scss';
 import { InputText } from './styledComponents';
@@ -44,10 +51,12 @@ const Navbar = () => {
 
           <div className="navbar__right-section">
             <div className="toggle">
+              <FaRegMoon size={20} />
               <label className="switch">
                 <input type="checkbox" />
                 <span className="slider round"></span>
               </label>
+              <FaSun size={20} />
             </div>
             <Link to="/">
               <FaUserNinja />
