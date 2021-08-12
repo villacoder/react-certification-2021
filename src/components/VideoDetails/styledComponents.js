@@ -3,6 +3,11 @@ import styled from 'styled-components';
 export const TitleSpan = styled.span`
   font-size: 3rem;
   font-weight: bold;
+
+  @media only screen and (max-width: 700px) {
+    font-size: 1.8rem;
+  }
+
 `;
 TitleSpan.displayName = 'TitleSpan';
 
