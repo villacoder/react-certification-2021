@@ -8,7 +8,7 @@ const youtube = new YouTube(process.env.REACT_APP_API_KEY_YOUTUBE);
 export const VideoGrid = () => {
   const { passToChild, selectedVideo, setSelectedVideo, setPlayVideo } = useContext(
     VideoContext
-    );
+  );
   const [videoList, setVideoList] = useState([]);
   const [error, setError] = useState(false);
 
