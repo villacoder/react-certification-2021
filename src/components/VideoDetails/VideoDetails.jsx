@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Col, ListGroup } from 'react-bootstrap';
 import YouTube from 'simple-youtube-api';
 import VideoPreview from './VideoPreview';
 import Suggestions from './Suggestions';
+import VideoContext from '../../context/VideoContext';
 
 const youtube = new YouTube(process.env.REACT_APP_API_KEY_YOUTUBE);
 
-export const VideoDetails = ({ selectedVideo, setSelectedVideo }) => {
+export const VideoDetails = () => {
+  const { selectedVideo, setSelectedVideo } = useContext(VideoContext);
   const [videoList, setVideoList] = useState([]);
   const [error, setError] = useState(false);
 

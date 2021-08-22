@@ -4,51 +4,52 @@ import { VideoGrid } from '../../components/VideoCard/VideoGrid';
 import { NavSearchBar } from '../../components/NavSearchBar/NavSearchBar';
 import { VideoDetails } from '../../components/VideoDetails/VideoDetails';
 import Footer from '../../components/App/Footer';
+import VideoContext from '../../context/VideoContext';
 import './Main.styles.css';
 
 const MainPage = () => {
   const [passToChild, setPassToChild] = useState('');
   const [searchButton, setSearchButton] = useState(true);
-  const [selectedVideo, setSelectedVideo] = useState({});
   const [playVideo, setPlayVideo] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState({});
 
   if (playVideo || !searchButton) {
     return (
-      <>
-        <NavSearchBar
-          setPassToChild={setPassToChild}
-          setSearchButton={setSearchButton}
-          setPlayVideo={setPlayVideo}
-        />
+      <VideoContext.Provider
+        value={{
+          setPassToChild,
+          setSearchButton,
+          setPlayVideo,
+          selectedVideo,
+          setSelectedVideo,
+        }}
+      >
+        <NavSearchBar />
         <br />
         <Row style={{ padding: '0 10%', marginTop: 30 }}>
-          <VideoDetails
-            selectedVideo={selectedVideo}
-            setSelectedVideo={setSelectedVideo}
-          />
+          <VideoDetails />
         </Row>
         <Row style={{ padding: '0 10%' }}>
           <Footer />
         </Row>
-      </>
+      </VideoContext.Provider>
     );
   }
   return (
-    <div>
-      <NavSearchBar
-        setPassToChild={setPassToChild}
-        setSearchButton={setSearchButton}
-        setPlayVideo={setPlayVideo}
-      />
+    <VideoContext.Provider
+      value={{
+        setPassToChild,
+        setSearchButton,
+        setPlayVideo,
+        selectedVideo,
+        setSelectedVideo,
+        passToChild,
+      }}
+    >
+      <NavSearchBar />
       <br />
-      <VideoGrid
-        searchString={passToChild}
-        selectedVideo={selectedVideo}
-        setSelectedVideo={setSelectedVideo}
-        setPlayVideo={setPlayVideo}
-        justifyContent="center"
-      />
-    </div>
+      <VideoGrid justifyContent="center" />
+    </VideoContext.Provider>
   );
 };
 

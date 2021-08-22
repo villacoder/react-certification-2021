@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import { FaRegUserCircle } from 'react-icons/fa';
+import VideoContext from '../../context/VideoContext';
 
-export const NavSearchBar = ({ setPassToChild, setSearchButton, setPlayVideo }) => {
+export const NavSearchBar = () => {
+  const { setPassToChild, setSearchButton, setPlayVideo } = useContext(VideoContext);
   const [searchTerm, setSearchTerm] = useState('');
   const onSubmit = (event) => {
     event.preventDefault();
