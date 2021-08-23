@@ -9,6 +9,8 @@ export const VideoGrid = () => {
   const { passToChild, selectedVideo, setSelectedVideo, setPlayVideo } = useContext(
     VideoContext
   );
+  /* const { passToChild, selectedVideo, setSelectedVideo, setPlayVideo } =
+    useContext(VideoContext); */
   const [videoList, setVideoList] = useState([]);
   const [error, setError] = useState(false);
 

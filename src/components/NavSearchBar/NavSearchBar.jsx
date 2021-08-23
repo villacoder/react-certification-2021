@@ -17,64 +17,79 @@ export const NavSearchBar = () => {
 
   return (
     <Navbar style={{ backgroundColor: '#1C5476' }} expand="lg">
-      <Navbar.Brand style={{ color: '#FFFFFF', padding: '10px 10px' }} href="/">
+      <Navbar.Brand
+        style={{
+          color: '#FFFFFF',
+          padding: '10px 10px',
+          justifyContent: 'space-around',
+        }}
+        href="/"
+      >
         WizeTube
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="navbarScroll" />
-      <Navbar.Collapse id="navbarScroll">
+      <Navbar.Collapse id="navbarScroll" style={{ justifyContent: 'space-around' }}>
         <Nav
           className="mr-auto my-2 my-lg-0"
-          style={{ maxHeight: '100px', backgroundColor: '#1C5476' }}
+          style={{
+            maxHeight: '100px',
+            backgroundColor: '#1C5476',
+            justifyContent: 'space-around',
+          }}
           navbarScroll
         >
           {' '}
         </Nav>
-        <Form
-          className="d-flex"
-          onSubmit={onSubmit}
-          style={{
-            backgroundColor: '#3E6D8A',
-            border: 'none',
-            overflow: 'hidden',
-            borderRadius: '5px',
-            outline: 'none',
-          }}
-        >
-          <Button
+        <div style={{ justifyContent: 'space-around' }}>
+          <Form
+            className="d-flex"
+            onSubmit={onSubmit}
             style={{
               backgroundColor: '#3E6D8A',
               border: 'none',
               overflow: 'hidden',
+              borderRadius: '5px',
               outline: 'none',
-            }}
-            onClick={() => {
-              setPassToChild(searchTerm);
-              setSearchButton(true);
-              setPlayVideo(false);
             }}
           >
-            <BiSearchAlt2 color="white" size="30px" />
-          </Button>
-          <FormControl
-            type="search"
-            placeholder="Search.."
-            aria-label="Search"
-            style={{
-              backgroundColor: '#3E6D8A',
-              border: 'none',
-              color: 'white',
-              outline: 'none',
-              boxShadow: 'none',
-            }}
-            onChange={(event) => setSearchTerm(event.target.value)}
-          />
-        </Form>{' '}
-        <Nav justifyContent="flex-end">
-          <Link to="/login">
-            {' '}
-            <FaRegUserCircle color="white" size="35px" />{' '}
-          </Link>
-        </Nav>
+            <Button
+              style={{
+                backgroundColor: '#3E6D8A',
+                border: 'none',
+                overflow: 'hidden',
+                outline: 'none',
+              }}
+              onClick={() => {
+                setPassToChild(searchTerm);
+                setSearchButton(true);
+                setPlayVideo(false);
+              }}
+            >
+              <BiSearchAlt2 color="white" size="30px" />
+            </Button>
+            <FormControl
+              type="search"
+              placeholder="Search.."
+              aria-label="Search"
+              style={{
+                backgroundColor: '#3E6D8A',
+                border: 'none',
+                color: 'white',
+                outline: 'none',
+                boxShadow: 'none',
+              }}
+              onChange={(event) => setSearchTerm(event.target.value)}
+            />
+          </Form>{' '}
+        </div>
+        <div style={{ justifyContent: 'space-around' }}>
+          <Nav>
+            <Link to="/login">
+              {' '}
+              <FaRegUserCircle color="white" size="35px" />
+            </Link>
+          </Nav>
+        </div>
       </Navbar.Collapse>
     </Navbar>
   );
