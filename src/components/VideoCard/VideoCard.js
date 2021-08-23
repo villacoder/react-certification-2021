@@ -14,8 +14,8 @@ const VideoCard = ({ videoList, changeSelection, selectedVideoId, setPlayVideo }
             return (
               <Grid
                 item
-                xs={12}
-                sm={12}
+                xs={8}
+                sm={10}
                 md={4}
                 lg={3}
                 xl={3}

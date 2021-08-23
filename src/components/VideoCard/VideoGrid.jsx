@@ -38,16 +38,14 @@ export const VideoGrid = () => {
   return (
     <Grid sx={{ flexGrow: 1 }} container>
       {!error && (
-        <Grid>
-          <Grid container justifyContent="center">
-            <Grid container key={selectedVideo.id} item>
-              <VideoCard
-                videoList={videoList}
-                changeSelection={selectedVideoCallback}
-                selectedVideoId={selectedVideo.id}
-                setPlayVideo={setPlayVideo}
-              />
-            </Grid>
+        <Grid container justifyContent="center">
+          <Grid container key={selectedVideo.id} item justifyContent="center">
+            <VideoCard
+              videoList={videoList}
+              changeSelection={selectedVideoCallback}
+              selectedVideoId={selectedVideo.id}
+              setPlayVideo={setPlayVideo}
+            />
           </Grid>
         </Grid>
       )}
