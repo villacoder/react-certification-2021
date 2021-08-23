@@ -6,9 +6,8 @@ import VideoContext from '../../context/VideoContext';
 
 const youtube = new YouTube(process.env.REACT_APP_API_KEY_YOUTUBE);
 export const VideoGrid = () => {
-  const { passToChild, selectedVideo, setSelectedVideo, setPlayVideo } = useContext(
-    VideoContext
-  );
+  const { passToChild, selectedVideo, setSelectedVideo, setPlayVideo } =
+    useContext(VideoContext);
   const [videoList, setVideoList] = useState([]);
   const [error, setError] = useState(false);
 
@@ -34,10 +33,10 @@ export const VideoGrid = () => {
   };
 
   return (
-    <Grid sx={{ flexGrow: 1 }} container spacing={2}>
+    <Grid sx={{ flexGrow: 1 }} container>
       {!error && (
-        <Grid item xs={12}>
-          <Grid container justifyContent="center" spacing={3}>
+        <Grid>
+          <Grid container justifyContent="center">
             <Grid container key={selectedVideo.id} item>
               <VideoCard
                 videoList={videoList}
