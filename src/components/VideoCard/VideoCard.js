@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Grid from '@material-ui/core/Grid';
+import { AppContext } from '../../providers/App/AppProvider';
 
 const VideoCard = ({ changeSelection, videoList, selectedVideoId }) => {
-
+  const { app } = useContext(AppContext);
+  const { darkMode } = app;
   const changeSelectedVideo = (data) => {
     changeSelection(data);
   };
@@ -26,17 +28,17 @@ const VideoCard = ({ changeSelection, videoList, selectedVideoId }) => {
                 }}
                 style={{ cursor: 'pointer' }}
               >
-                <div>
-                  <div className="card">
+                <div className="backgroundColor" data-theme={darkMode ? 'dark' : 'light'}>
+                  <div className="card" data-theme={darkMode ? 'dark' : 'light'}>
                     <div className="card-cover-image">
                       <img src={data?.thumbnails.medium.url} alt="thumbnail" />
                     </div>
-                    <div className="card-box">
-                      <div className="card-title">
+                    <div className="card-box" data-theme={darkMode ? 'dark' : 'light'}>
+                      <div className="card-title" data-theme={darkMode ? 'dark' : 'light'}>
                         <span>{data?.title}</span>
                       </div>
-                      <div className="card-subtitle">{data?.channel.title}</div>
-                      <div className="card-content">
+                      <div className="card-subtitle" data-theme={darkMode ? 'dark' : 'light'}>{data?.channel.title}</div>
+                      <div className="card-content" data-theme={darkMode ? 'dark' : 'light'}>
                         <p>{data?.description}</p>
                       </div>
                     </div>

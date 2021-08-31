@@ -55,8 +55,9 @@ export const VideoDetails = () => {
       <Col xs={12} lg={4} md={12}>
         {!error && (
           <>
-            <ListGroup style={{ maxHeight: '80vh', overflowY: 'scroll' }}>
+            <ListGroup style={{ maxHeight: '80vh', overflowY: 'scroll' }} >
               <Suggestions
+                
                 videoList={videoList}
                 changeSelection={selectedVideoCallback}
                 selectedVideoId={selectedVideo?.id}

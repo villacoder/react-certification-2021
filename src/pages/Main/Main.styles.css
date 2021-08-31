@@ -1,3 +1,15 @@
+:root {
+  --bg-color: #fff;
+  --text-color: #000;
+  --box-shadow: 0px 14px 22px -9px #bbcbd8;
+}
+
+[data-theme="dark"] {
+  --bg-color: #303030;
+  --text-color: #fff;
+  --box-shadow: 0px 14px 22px -9px #010a13;
+}
+
 h1 {
   font-size: 3.75rem;
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
@@ -11,11 +23,17 @@ h1 {
   margin-inline-start: 0px;
   margin-inline-end: 0px;
 }
+h5{
+  color:var(--text-color);
+}
+.backgroundColor{
+  background-color: var(--bg-color);
+  border: var(--bg-color);
+}
 
 .card {
-  border: 1px solid #f0f0f0;
   border-radius: 5px;
-  box-shadow: 0px 14px 22px -9px #bbcbd8;
+  box-shadow: var(--box-shadow);
   /* margin: 0; */
   margin: 8px;
   width: inherit;
@@ -24,11 +42,14 @@ h1 {
   box-sizing: inherit;
   text-align: left;
   overflow: visible;
+  color:var(--text-color);
 }
 
 .card-box {
   padding: 10px;
-  width: 25em border-box;
+  border: 1px solid var(--bg-color);
+  width: 25em border-box var(--bg-color);
+  background-color: var(--bg-color);
 }
 
 .card-cover-image img {
@@ -49,6 +70,8 @@ h1 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  color: var(--text-color);
+
 }
 p {
   margin: 0;
@@ -59,4 +82,5 @@ p {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  color: var(--text-color);
 }
