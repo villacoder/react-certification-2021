@@ -1,7 +1,8 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 
-const VideoCard = ({ videoList, changeSelection, selectedVideoId, setPlayVideo }) => {
+const VideoCard = ({ changeSelection, videoList, selectedVideoId }) => {
+
   const changeSelectedVideo = (data) => {
     changeSelection(data);
   };
@@ -10,7 +11,7 @@ const VideoCard = ({ videoList, changeSelection, selectedVideoId, setPlayVideo }
     <>
       {videoList.length > 0 &&
         videoList.map((data) => {
-          if (data.id !== selectedVideoId) {
+          if (data?.id !== selectedVideoId) {
             return (
               <Grid
                 item
@@ -19,12 +20,8 @@ const VideoCard = ({ videoList, changeSelection, selectedVideoId, setPlayVideo }
                 md={4}
                 lg={3}
                 xl={3}
-                direction="row"
-                justifyContent="center"
-                alignItems="baseline"
-                key={data.id}
+                key={data?.id}
                 onClick={() => {
-                  setPlayVideo(true);
                   changeSelectedVideo(data);
                 }}
                 style={{ cursor: 'pointer' }}
@@ -32,15 +29,15 @@ const VideoCard = ({ videoList, changeSelection, selectedVideoId, setPlayVideo }
                 <div>
                   <div className="card">
                     <div className="card-cover-image">
-                      <img src={data.thumbnails.medium.url} alt="thumbnail" />
+                      <img src={data?.thumbnails.medium.url} alt="thumbnail" />
                     </div>
                     <div className="card-box">
                       <div className="card-title">
-                        <span>{data.title}</span>
+                        <span>{data?.title}</span>
                       </div>
-                      <div className="card-subtitle">{data.channel.title}</div>
+                      <div className="card-subtitle">{data?.channel.title}</div>
                       <div className="card-content">
-                        <p>{data.description}</p>
+                        <p>{data?.description}</p>
                       </div>
                     </div>
                   </div>

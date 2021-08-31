@@ -3,18 +3,20 @@ import { Col, ListGroup } from 'react-bootstrap';
 import YouTube from 'simple-youtube-api';
 import VideoPreview from './VideoPreview';
 import Suggestions from './Suggestions';
-import VideoContext from '../../context/VideoContext';
+import { AppContext } from '../../providers/App/AppProvider';
+import { types } from '../../providers/App/types';
 
 const youtube = new YouTube(process.env.REACT_APP_API_KEY_YOUTUBE);
 
 export const VideoDetails = () => {
-  const { selectedVideo, setSelectedVideo } = useContext(VideoContext);
+  const { app, dispatch } = useContext(AppContext);
+  const { selectedVideo } = app;
   const [videoList, setVideoList] = useState([]);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     const callApi = async () => {
-      const result = await youtube.searchVideos(selectedVideo.title, 11);
+      const result = await youtube.searchVideos(selectedVideo?.title, 11);
 
       if (result.length === 0) {
         setError(true);
@@ -27,7 +29,18 @@ export const VideoDetails = () => {
   }, [selectedVideo]);
 
   const selectedVideoCallback = (videoDetail) => {
-    setSelectedVideo(videoDetail);
+    dispatch({
+      type: types.setPlayVideo,
+      payload: true,
+    });
+    dispatch({
+      type: types.setSearchButton,
+      payload: false,
+    });
+    dispatch({
+      type: types.setSelectedVideo,
+      payload: videoDetail,
+    });
   };
 
   return (
@@ -46,7 +59,7 @@ export const VideoDetails = () => {
               <Suggestions
                 videoList={videoList}
                 changeSelection={selectedVideoCallback}
-                selectedVideoId={selectedVideo.id}
+                selectedVideoId={selectedVideo?.id}
               />
             </ListGroup>
           </>

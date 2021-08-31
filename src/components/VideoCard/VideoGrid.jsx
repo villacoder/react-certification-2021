@@ -2,15 +2,15 @@ import React, { useEffect, useState, useContext } from 'react';
 import YouTube from 'simple-youtube-api';
 import Grid from '@material-ui/core/Grid';
 import VideoCard from './VideoCard';
-import VideoContext from '../../context/VideoContext';
+import { AppContext } from '../../providers/App/AppProvider';
+import { types } from '../../providers/App/types';
 
 const youtube = new YouTube(process.env.REACT_APP_API_KEY_YOUTUBE);
+
 export const VideoGrid = () => {
-  const { passToChild, selectedVideo, setSelectedVideo, setPlayVideo } = useContext(
-    VideoContext
-  );
-  /* const { passToChild, selectedVideo, setSelectedVideo, setPlayVideo } =
-    useContext(VideoContext); */
+  const { app, dispatch } = useContext(AppContext);
+  const { passToChild, selectedVideo } = app;
+
   const [videoList, setVideoList] = useState([]);
   const [error, setError] = useState(false);
 
@@ -32,19 +32,29 @@ export const VideoGrid = () => {
   }, [passToChild, selectedVideo]);
 
   const selectedVideoCallback = (videoDetail) => {
-    setSelectedVideo(videoDetail);
+    dispatch({
+      type: types.setPlayVideo,
+      payload: true,
+    });
+    dispatch({
+      type: types.setSearchButton,
+      payload: false,
+    });
+    dispatch({
+      type: types.setSelectedVideo,
+      payload: videoDetail,
+    });
   };
 
   return (
     <Grid sx={{ flexGrow: 1 }} container>
       {!error && (
         <Grid container justifyContent="center">
-          <Grid container key={selectedVideo.id} item justifyContent="center">
+          <Grid container key={selectedVideo?.id} item justifyContent="center">
             <VideoCard
-              videoList={videoList}
               changeSelection={selectedVideoCallback}
-              selectedVideoId={selectedVideo.id}
-              setPlayVideo={setPlayVideo}
+              videoList={videoList}
+              selectedVideoId={selectedVideo?.id}
             />
           </Grid>
         </Grid>

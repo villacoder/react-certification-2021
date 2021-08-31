@@ -10,10 +10,10 @@ export default ({ videoList, changeSelection, selectedVideoId }) => {
     <>
       {videoList.length > 0 &&
         videoList.map((data) => {
-          if (data.id !== selectedVideoId) {
+          if (data?.id !== selectedVideoId) {
             return (
               <ListGroup.Item
-                key={data.id}
+                key={data?.id}
                 onClick={() => changeSelectedVideo(data)}
                 style={{ cursor: 'pointer' }}
               >
@@ -25,11 +25,15 @@ export default ({ videoList, changeSelection, selectedVideoId }) => {
                   }}
                 >
                   <div>
-                    <img src={data.thumbnails.medium.url} height="60px" alt="thumbnail" />
+                    <img
+                      src={data?.thumbnails.medium.url}
+                      height="60px"
+                      alt="thumbnail"
+                    />
                   </div>
                   <div style={{ paddingLeft: 5 }}>
-                    <div className="sugg-title">{data.title}</div>
-                    <div className="sugg-channel">{data.channel.title}</div>
+                    <div className="sugg-title">{data?.title}</div>
+                    <div className="sugg-channel">{data?.channel.title}</div>
                   </div>
                 </div>
               </ListGroup.Item>

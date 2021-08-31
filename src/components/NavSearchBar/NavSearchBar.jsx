@@ -1,18 +1,39 @@
 import React, { useState, useContext } from 'react';
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { Link } from 'react-router-dom';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import { FaRegUserCircle } from 'react-icons/fa';
-import VideoContext from '../../context/VideoContext';
+import { AppContext } from '../../providers/App/AppProvider';
+import { types } from '../../providers/App/types';
 
 export const NavSearchBar = () => {
-  const { setPassToChild, setSearchButton, setPlayVideo } = useContext(VideoContext);
+  const { dispatch } = useContext(AppContext);
   const [searchTerm, setSearchTerm] = useState('');
+  const [checked, setChecked] = React.useState(false);
+
+  const toggleChecked = () => {
+    setChecked((prev) => !prev);
+    dispatch({
+      type: types.setDarkMode
+    });
+  };
+
   const onSubmit = (event) => {
+    dispatch({
+      type: types.setPlayVideo,
+      payload: false,
+    });
+    dispatch({
+      type: types.setSearchButton,
+      payload: true,
+    });
+    dispatch({
+      type: types.setPassToChild,
+      payload: searchTerm,
+    });
     event.preventDefault();
-    setPassToChild(searchTerm);
-    setSearchButton(true);
-    setPlayVideo(false);
   };
 
   return (
@@ -60,9 +81,18 @@ export const NavSearchBar = () => {
                 outline: 'none',
               }}
               onClick={() => {
-                setPassToChild(searchTerm);
-                setSearchButton(true);
-                setPlayVideo(false);
+                dispatch({
+                  type: types.setSearchButton,
+                  payload: true,
+                });
+                dispatch({
+                  type: types.setPlayVideo,
+                  payload: false,
+                });
+                dispatch({
+                  type: types.setPassToChild,
+                  payload: searchTerm,
+                });
               }}
             >
               <BiSearchAlt2 color="white" size="30px" />
@@ -82,6 +112,12 @@ export const NavSearchBar = () => {
             />
           </Form>{' '}
         </div>
+        <FormControlLabel
+          control={<Switch checked={checked} onChange={toggleChecked} />}
+          label="Dark mode" style={{
+            color: 'white'
+          }}
+        />
         <div style={{ justifyContent: 'space-around' }}>
           <Nav>
             <Link to="/login">
