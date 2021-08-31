@@ -7,9 +7,9 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={ HomeView } />
+        <Route exact path="/" component={HomeView} />
         <Route exact path="/videoview/:id">
-            <VideoView />
+          <VideoView />
         </Route>
         <Redirect to="/" />
       </Switch>

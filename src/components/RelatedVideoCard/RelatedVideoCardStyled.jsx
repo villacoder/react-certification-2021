@@ -15,14 +15,14 @@ const Card = styled.div`
 
 const CardImageContainer = styled.div`
   width: 150px;
-  float:left;
+  float: left;
   margin-right: 1rem;
   overflow: hidden;
 `;
 
 const CardImage = styled.img`
   width: 160px;
-  height:100px;
+  height: 100px;
   object-fit: contain;
 `;
 
