@@ -16,7 +16,7 @@ export const NavSearchBar = () => {
   const toggleChecked = () => {
     setChecked((prev) => !prev);
     dispatch({
-      type: types.setDarkMode
+      type: types.setDarkMode,
     });
   };
 
@@ -114,8 +114,9 @@ export const NavSearchBar = () => {
         </div>
         <FormControlLabel
           control={<Switch checked={checked} onChange={toggleChecked} />}
-          label="Dark mode" style={{
-            color: 'white'
+          label="Dark mode"
+          style={{
+            color: 'white',
           }}
         />
         <div style={{ justifyContent: 'space-around' }}>
